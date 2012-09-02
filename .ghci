@@ -1,0 +1,7 @@
+:set -isrc -idist/build/autogen
+:set -Wall 
+:l PROJECT_NAMESPACE
+:m + PROJECT_NAMESPACE
+:set prompt ">> "
+
+

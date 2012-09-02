@@ -1,0 +1,30 @@
+Name:               PROJECT_LOWER-demo
+Version:            0.0.1
+License:            BSD3
+Author:             Mark Hibberd <mark@hibberd.id.au>
+Maintainer:         Mark Hibberd <mark@hibberd.id.au>
+Copyright:          Mark Hibberd
+Synopsis:           Demo package for PROJECT_DESC
+Category:           Experimental
+Description:        Demo package for PROJECT_DESC
+Homepage:           https://github.com/GITHUB_USER/PROJECT_LOWER
+Cabal-Version:      >= 1.6
+Build-Type:         Simple
+
+Source-Repository   head
+  Type:             git
+  Location:         https://github.com/GITHUB_USER/PROJECT_LOWER.git
+
+Flag                small_base
+  Description:      Choose the new, split-up base package.
+
+Executable          PROJECT_LOWER-demo
+  Hs-Source-Dirs:
+                    ../../src .
+
+  Main-Is:
+                    Main.hs
+
+  Build-Depends:
+                   base >= 3 && < 5
+

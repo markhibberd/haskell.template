@@ -1,0 +1,38 @@
+#!/bin/sh -eu
+
+LOCATION=`(readlink "$0" || printf "%s" "$0") | xargs dirname`
+
+printf "project name (lower case, '-' separated): "
+read PROJECT_LOWER
+
+printf "project desc (single sentence decription): "
+read PROJECT_DESC
+
+printf "project namespace (camel case, '.' separated): "
+read PROJECT_NAMESPACE
+
+printf "github account name: "
+read GITHUB_USER
+
+PROJECT_NAMESPACE_DIR="`echo $PROJECT_NAMESPACE | sed -e 's:.:/:g'`"
+
+RENAME="sed -e s:PROJECT_LOWER:$PROJECT_LOWER:g -e s:PROJECT_NAMESPACE_DIR:$PROJECT_NAMESPACE_DIR:g -e s:PROJECT_DESC:$P
+ROJECT_DESC:g -e s:PROJECT_NAMESPACE:$PROJECT_NAMESPACE:g -e s:GITHUB_USER:$GITHUB_USER:g"
+
+# file renames
+find "$LOCATION" | while read d; do
+   target=`echo "$d" | $RENAME`
+   [ "$target" = "$d" ] || {
+     target_dir=`dirname $target`
+     target_file=`basename $target`
+     mkdir -p "$target_dir"
+     mv "$d" "$target_dir/$target_file" 
+   }
+done
+
+# content renames
+find "$LOCATION" -type f | while read f; do
+    mv "$f" "$f.bak"
+    $RENAME < "$f.bak" > "$f" && rm "$f.bak"
+done
+
