@@ -36,3 +36,8 @@ find "$LOCATION" -type f | while read f; do
     $RENAME < "$f.bak" > "$f" && rm "$f.bak"
 done
 
+# tweak readme
+rm $LOCATION/README.md
+mv $LOCATION/README $LOCATION/README.md
+
+echo "Don't forget to delete $LOCATION/.git and re `git init`"
