@@ -6,7 +6,7 @@ Author:             Mark Hibberd <mark@hibberd.id.au>
 Maintainer:         Mark Hibberd <mark@hibberd.id.au>
 Copyright:          (c) 2012 Mark Hibberd
 Synopsis:           PROJECT_DESC
-Category:           Database
+Category:           PROJECT_CAT
 Homepage:           https://github.com/GITHUB_USER/PROJECT_LOWER
 Bug-reports:        https://github.com/GITHUB_USER/PROJECT_LOWER/issues
 Cabal-Version:      >= 1.8
