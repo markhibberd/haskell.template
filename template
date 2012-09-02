@@ -50,6 +50,6 @@ done
 
 # tweak readme
 rm "$LOCATION/README.md"
-mv "$LOCATION/README $LOCATION/README.md"
+mv "$LOCATION/README" "$LOCATION/README.md"
 rm -rf "$LOCATION/.git"
 (cd $LOCATION && git init && git add . && git commit -m "initial commit created by template")
