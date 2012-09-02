@@ -21,7 +21,18 @@ PROJECT_NAMESPACE_DIR="`echo $PROJECT_NAMESPACE | sed -e 's:\.:/:g'`"
 set -- sed -e "s:PROJECT_LOWER:$PROJECT_LOWER:g" -e "s:PROJECT_NAMESPACE_DIR:$PROJECT_NAMESPACE_DIR:g" -e "s:PROJECT_DESC:$PROJECT_DESC:g" -e "s:PROJECT_NAMESPACE:$PROJECT_NAMESPACE:g" -e "s:GITHUB_USER:$GITHUB_USER:g" -e "s:PROJECT_CAT:$PROJECT_CAT:g"
 
 # file renames
-find "$LOCATION" | while read d; do
+find "$LOCATION" -type f | while read d; do
+   target=`echo "$d" | "$@"`
+   [ "$target" = "$d" ] || {
+     target_dir=`dirname $target`
+     target_file=`basename $target`
+     mkdir -p "$target_dir"
+     mv "$d" "$target_dir/$target_file" 
+   }
+done
+
+# directory renames
+find "$LOCATION" -type d | while read d; do
    target=`echo "$d" | "$@"`
    [ "$target" = "$d" ] || {
      target_dir=`dirname $target`
