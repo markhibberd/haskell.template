@@ -49,7 +49,7 @@ find "$LOCATION" -type f | while read f; do
 done
 
 # tweak readme
-rm $LOCATION/README.md
-mv $LOCATION/README $LOCATION/README.md
-
-echo "Don't forget to delete $LOCATION/.git and re `git init`"
+rm "$LOCATION/README.md"
+mv "$LOCATION/README $LOCATION/README.md"
+rm -rf "$LOCATION/.git"
+(cd $LOCATION && git init && git add . && git commit -m "initial commit created by template")
