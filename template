@@ -48,6 +48,9 @@ find "$LOCATION" -type f | while read f; do
     "$@" < "$f.bak" > "$f" && rm "$f.bak"
 done
 
+# mafia
+chmod +x "$LOCATION/mafia"
+
 # tweak readme
 rm "$LOCATION/README.md"
 mv "$LOCATION/README" "$LOCATION/README.md"
