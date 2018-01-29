@@ -2,14 +2,14 @@ Name:               PROJECT_LOWER
 Version:            0.0.1
 License:            BSD3
 License-File:       LICENSE
-Author:             Mark Hibberd <mark@hibberd.id.au>
-Maintainer:         Mark Hibberd <mark@hibberd.id.au>
-Copyright:          (c) 2012 Mark Hibberd
+Author:             Navin Keswani <navin@keswani.id.au>
+Maintainer:         Navin Keswani <navin@keswani.id.au>
+Copyright:          (c) 2012 Navin Keswani
 Synopsis:           PROJECT_DESC
 Category:           PROJECT_CAT
 Homepage:           https://github.com/GITHUB_USER/PROJECT_LOWER
 Bug-reports:        https://github.com/GITHUB_USER/PROJECT_LOWER/issues
-Cabal-Version:      >= 1.8
+Cabal-Version:      >= 1.24
 Build-Type:         Simple
 Description:
   PROJECT_LOWER
@@ -18,15 +18,18 @@ Source-Repository   head
   Type:             git
   Location:         https://github.com/GITHUB_USER/PROJECT_LOWER.git
 
-Flag                small_base
-  Description:      Choose the new, split-up base package.
-
 Library
+  Default-Language: Haskell2010
+
   Build-Depends:
                     base                            >= 3          && < 5
+                  , containers                      >= 0.5.8      && < 0.6
+                  , text                            == 1.2.*
+                  , transformers                    >= 0.3        && < 0.6
+
 
   GHC-Options:
-                    -Wall -fno-warn-orphans
+                    -Wall
 
   Hs-Source-Dirs:
                     src
@@ -34,4 +37,18 @@ Library
   Exposed-Modules:
                     PROJECT_NAMESPACE
                     PROJECT_NAMESPACE.Core
+                    PROJECT_NAMESPACE.EitherT
+                    PROJECT_NAMESPACE.Prelude
 
+Test-Suite          test
+  Default-Language: Haskell2010
+  Type:             exitcode-stdio-1.0
+  Main-Is:          test.hs
+  Hs-Source-Dirs:   test
+  Build-Depends:
+                    base                            >= 3          && < 5
+                  , hedgehog                        == 0.5.*
+                  , PROJECT_LOWER
+
+  ghc-options:
+                  -Wall -threaded -O2
