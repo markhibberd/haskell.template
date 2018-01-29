@@ -1,5 +1,5 @@
-This is a template for create a haskell library.
+This is a template to create a haskell library.
 
-It is a pretty standard structure, with demo and test trees.
+It forks @markhibberd's project and adds support for building with `mafia` and testing with `hedgehog`
 
-Run `git clone https://github.com/markhibberd/haskell.template.git <project> && cd <project> && ./template` and follow prompts.
+Run `git clone https://github.com/novemberkilo/haskell.template.git <project> && cd <project> && ./template` and follow prompts.

@@ -23,6 +23,10 @@ Library
 
   Build-Depends:
                     base                            >= 3          && < 5
+                  , containers                      >= 0.5.8      && < 0.7
+                  , text                            == 1.2.*
+                  , transformers                    == 0.5.*
+
 
   GHC-Options:
                     -Wall -fno-warn-orphans
@@ -33,6 +37,8 @@ Library
   Exposed-Modules:
                     PROJECT_NAMESPACE
                     PROJECT_NAMESPACE.Core
+                    PROJECT_NAMESPACE.EitherT
+                    PROJECT_NAMESPACE.Prelude
 
 Test-Suite          test
   Default-Language: Haskell2010
